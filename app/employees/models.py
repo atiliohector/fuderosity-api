@@ -1,13 +1,13 @@
 from django.db import models
 
-class EmployeesModels(models.Model):
-    
-    class Meta:
-       db_table = 'employees'
+class EmployeeModel(models.Model):
 
-    name = models.CharField('Name', max_length=255, blank=False)
-    age = models.PositiveBigIntegerField('Age', blank=False, default=18)
-    position = models.CharField('Position', max_length=255, blank=False)
-    
+    class Meta:
+        db_table = 'employees'
+
+    name = models.CharField('name', max_length=255, blank=False)
+    age = models.PositiveIntegerField('age', default=18, blank=False)
+    position = models.CharField('position', blank=False, max_length=30)
+
     def __str__(self):
         return self.name

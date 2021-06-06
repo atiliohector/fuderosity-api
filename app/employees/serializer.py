@@ -1,8 +1,9 @@
+from django.db.models.query import QuerySet
 from rest_framework import serializers
 
-from .models import EmployeesModels
+from .models import EmployeeModel
 
-class EmployeeSerializer(serializers.ModelSerializer):
+class EmployeesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EmployeesModels
+        model = EmployeeModel
         fields = '__all__'

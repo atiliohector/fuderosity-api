@@ -4,10 +4,13 @@ from rest_framework.response import Response
 
 from .models import EmployeeModel
 from .serializer import EmployeesSerializer
+from app.employees import serializer
+
+from app.employees import models
 
 @api_view(['GET','POST'])
-def fuderosity_employees(request):
+def employees_all(request):
     if request.method == 'GET':
-        employes_baby = EmployeeModel.objects.all()
-        serializer = EmployeesSerializer(employes_baby,many=True)
+        employee = EmployeeModel.objects.all()
+        serializer = EmployeesSerializer(employee,many=True)
         return Response(serializer.data)

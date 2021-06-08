@@ -7,22 +7,22 @@ from .models import EmployeeModel
 from .serializer import EmployeesSerializer
 
 # Create your views here.
-class ListTodoAPIView(ListAPIView):
+class AllEmployees(ListAPIView):
     """Lists all todos from the database"""
     queryset = EmployeeModel.objects.all()
     serializer_class = EmployeesSerializer
 
-class CreateTodoAPIView(CreateAPIView):
+class CreateEmployee(CreateAPIView):
     """Creates a new todo"""
     queryset = EmployeeModel.objects.all()
     serializer_class = EmployeesSerializer
 
-class UpdateTodoAPIView(UpdateAPIView):
+class UpdateEmployee(UpdateAPIView):
     """Update the todo whose id has been passed through the request"""
     queryset = EmployeeModel.objects.all()
     serializer_class = EmployeesSerializer
 
-class DeleteTodoAPIView(DestroyAPIView):
+class DeleteEmployee(DestroyAPIView):
     """Deletes a todo whose id has been passed through the request"""
     queryset = EmployeeModel.objects.all()
     serializer_class = EmployeesSerializer

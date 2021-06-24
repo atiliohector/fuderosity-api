@@ -30,8 +30,10 @@ INSTALLED_APPS = [
     'app.managers',
 
     'rest_framework',
+    'rest_framework_swagger',
 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -12,4 +12,18 @@ class AllManagers(APIView):
         serializer = ManagerSerializer(managers,many=True)
         return Response(serializer.data)
     
-    
+    def post(self, request):
+
+        data = {
+            'name': request.data.get('name'),
+            'age': request.data.get('age'),
+            'champions': request.data.get('champions'),
+            'champion_name': request.data.get('champion_name')
+        }
+
+        serializer = ManagerSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)

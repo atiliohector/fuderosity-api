@@ -11,3 +11,20 @@ class AllManagers(APIView):
         managers = ManagersModel.objects.all()
         managers_serializer = ManagerSerializer(managers, many=True)
         return Response(managers_serializer.data)
+    
+    def post(self, request):
+
+        data = {
+            'name' : request.data.get('name'),
+            'age' : request.data.get('age'),
+            'champions' : request.data.get('champions'),
+            'champion_name' : request.data.get('champion_name'),
+        }
+
+        serializer_manager = ManagerSerializer(data=data)
+
+        if serializer_manager.is_valid():
+            serializer_manager.save()
+            return Response(serializer_manager.data)
+        else:
+            return Response(serializer_manager.errors)

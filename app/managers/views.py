@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 from .models import ManagersModel
 from .serializer import ManagerSerializer
+from app.managers import serializer
 
 class AllManagers(APIView):
 
@@ -27,4 +28,4 @@ class AllManagers(APIView):
             serializer.save()
             return Response(serializer.data)
         else:
-            return Response(serializer.errors)
+            return Response(serializer.erros)

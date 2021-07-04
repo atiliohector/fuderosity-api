@@ -61,11 +61,3 @@ class ManagersByChampionName(APIView):
         champion = ManagersModel.objects.filter(champion_name=champion_name)
         manager_serializer = ManagerSerializer(champion, many=True)
         return Response(manager_serializer.data)
-
-class ManagersByChampionsQuantify(APIView):
-
-    def get(self, request, champions):
-
-        champion_quantify = ManagersModel.objects.filter(champions=champions)
-        manager_serializer = ManagerSerializer(champion_quantify, many=True)
-        return Response(manager_serializer.data)

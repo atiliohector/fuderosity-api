@@ -53,3 +53,11 @@ class ManagersChampions(APIView):
     def get(self, request):
         champions_managers = [champion.champion_name for champion in ManagersModel.objects.all()]
         return Response(champions_managers)
+
+class ManagersByChampionName(APIView):
+
+    def get(self, request, champion_name):
+
+        champion = ManagersModel.objects.filter(champion_name=champion_name)
+        manager_serializer = ManagerSerializer(champion, many=True)
+        return Response(manager_serializer.data)

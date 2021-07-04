@@ -50,6 +50,6 @@ class ManagerById(APIView):
 
 class ManagersChampions(APIView):
 
-    def get(self, request, champions):
-        champions_managers = [champions.champions for champions in ManagersModel.objects.filter(champions=champions)]
-        return Response(champions)
+    def get(self, request):
+        champions_managers = [champion.champion_name for champion in ManagersModel.objects.all()]
+        return Response(champions_managers)

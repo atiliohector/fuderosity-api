@@ -9,5 +9,6 @@ urlpatterns = [
     path('manager/<int:id>/', views.ManagerById.as_view()),
     path('champions/', views.ManagersChampions.as_view()),
     path('champions/<str:champion_name>/', views.ManagersByChampionName.as_view()),
+    path('champions/<int:champions>/', views.ManagersByChampionsQuantify.as_view())
 
 ]

@@ -47,3 +47,9 @@ class ManagerById(APIView):
         manager = self.get_object(id=id)
         manager_serializer = ManagerSerializer(manager)
         return Response(manager_serializer.data)
+
+class ManagersChampions(APIView):
+
+    def get(self, request, champions):
+        champions_managers = [champions.champions for champions in ManagersModel.objects.filter(champions=champions)]
+        return Response(champions)

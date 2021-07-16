@@ -4,5 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path('all/', views.AllStudent.as_view())
+    path('all/', views.AllStudent.as_view()),
+    path('create/', views.AddStudent.as_view()),
 ]

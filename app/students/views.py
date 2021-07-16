@@ -53,3 +53,13 @@ class SpecifStudent(APIView):
         student = self.get_student(id)
         student.delete()
         return Response('Done, baby!')
+    
+    def put(self, request,id):
+
+        student = self.get_student(id)
+        student_serializer = StudentSerializer(student, data=request.data)
+        if student_serializer.is_valid():
+            student_serializer.save()
+            return Response('Done, baby')
+        else:
+            return Response('Fail, baby!')

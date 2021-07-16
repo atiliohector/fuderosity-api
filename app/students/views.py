@@ -30,3 +30,36 @@ class AddStudent(APIView):
             return Response(student_serializer.data)
         else:
             return Response(student_serializer.errors)
+
+class SpecifStudent(APIView):
+
+    def get_student(self, id):
+        try:
+            return StudentModel.objects.get(id=id)
+        except StudentModel.DoesNotExist:
+            return Response('I did not find out!')
+
+    def get(self, request, id):
+
+        student = self.get_student(id)
+        student_serializer = StudentSerializer(student)
+        try:
+            return Response(student_serializer.data)
+        except StudentModel.objects.DoesNotExist:
+            return Response('Try again, bitch!')
+    
+    def delete(self, request, id):
+
+        student = self.get_student(id)
+        student.delete()
+        return Response('Done, baby!')
+    
+    def put(self, request,id):
+
+        student = self.get_student(id)
+        student_serializer = StudentSerializer(student, data=request.data)
+        if student_serializer.is_valid():
+            student_serializer.save()
+            return Response('Done, baby')
+        else:
+            return Response('Fail, baby!')

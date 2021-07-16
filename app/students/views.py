@@ -47,4 +47,9 @@ class SpecifStudent(APIView):
             return Response(student_serializer.data)
         except StudentModel.objects.DoesNotExist:
             return Response('Try again, bitch!')
-        
+    
+    def delete(self, request, id):
+
+        student = self.get_student(id)
+        student.delete()
+        return Response('Done, baby!')

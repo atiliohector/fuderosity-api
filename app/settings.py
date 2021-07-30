@@ -3,12 +3,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-APPEND_SLASH=False
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gy(1_t7!cr@q$&-d$=10jkup!4oc-ihq=629y=fe5k-)piolsi'
+SECRET_KEY = 'django-insecure-s^wpg_4guldhwnn$h-n0v)+6$j2dq-!i!80ryj#ebc1ho)sn4e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,12 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app.students',
+    'app.users',
 
     'rest_framework',
-    
-]
 
+    'corsheaders',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -41,7 +41,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 ROOT_URLCONF = 'app.urls'
 
